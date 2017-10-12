@@ -38,18 +38,18 @@ def login():
 def analysis_data():
     # print content
     pattern = '>Resets: (\d{4}-\d{2}-\d{2})<.*>(\d*\.?\d*)/(\d*) GB'
-    contenta ='</td></tr><tr><td>RAM:</td><td><span class="indicator"><table cellspacing="0" cellpadding="0" style="width:100;border:1px solid #00a000"><tbody><tr><td style="width:36%;background:#00a000;height:8px;vertical-align:middle"></td><td style="width:64%"></td></tr></tbody></table></span><font color="#a0a0a0">182.62/512 MB</font></td></tr><tr><td>SWAP:</td><td><span class="indicator"><table cellspacing="0" cellpadding="0" style="width:100;border:1px solid #00a000"><tbody><tr><td style="width:0%;background:#00a000;height:8px;vertical-align:middle"></td><td style="width:100%"></td></tr></tbody></table></span><font color="#a0a0a0">0/132 MB</font></td></tr><tr><td>Disk usage (/):</td><td><span class="indicator"><table cellspacing="0" cellpadding="0" style="width:100;border:1px solid #00a000"><tbody><tr><td style="width:13%;background:#00a000;height:8px;vertical-align:middle"></td><td style="width:87%"></td></tr></tbody></table></span><font color="#a0a0a0">1.4/11 GB</font></td></tr><tr><td>Bandwidth usage:<br /><font color="#a0a0a0">Resets: 2017-10-26</font></td><td><span class="indicator"><table cellspacing="0" cellpadding="0" style="width:100;border:1px solid #00a000"><tbody><tr><td style="width:2%;background:#00a000;height:8px;vertical-align:middle"></td><td style="width:98%"></td></tr></tbody></table></span><font color="#a0a0a0">11.74/550 GB'
-    info = re.search(pattern,contenta)
+    #print type(content)
+    info = re.search(pattern,str(content))
     deadline ,used = info.groups()[0], info.groups()[1]
     print '已用 %s GB'% used
-    sendmail.send_mail(sender, pwd, recipient, 'Bandwagong used %s GB' % used , '%s到期,已用%sGB'%(deadline, used))
+    sendmail.send_mail(sender, pwd, recipient, 'BWG used %s GB' % used , '%s到期,已用%sGB'%(deadline, used))
     print 'email send'
 
 
 if __name__=='__main__':
     print '--', time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()), '--'
-    serverIP, login_pwd = '67.216.211.14', 'katios'
-    sender, pwd, recipient = 'wkatios@139.com', 'wk123456', 'wkatios@139.com',
+    serverIP, login_pwd = 'ip', 'pwd'
+    sender, pwd, recipient = 'sender@xxx.com', 'pwd', 'recipient@xxx.com',
     try:
         driver = initial()
         content = login()

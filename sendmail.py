@@ -10,7 +10,7 @@ from email.mime.image import MIMEImage
 def send_mail(sender, pwd, recipient, subject,email_content):
     to_list =[]
     to_list.append(recipient)
-    print to_list
+    #print to_list
     host_list = sender
     username = sender
     password = pwd
@@ -31,7 +31,7 @@ def send_mail(sender, pwd, recipient, subject,email_content):
     smtp.login(username, password)
     smtp.sendmail(host_list, to_list, msg.as_string())
     smtp.close()
-    print '邮件已发送'
+    #print '邮件已发送'
 
 if __name__=='__main__':
     send_mail('wkatios@139.com', ur'wk123456', 'wkatios@139.com', 'AWS Billing', 'test')

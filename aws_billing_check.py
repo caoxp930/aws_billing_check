@@ -33,13 +33,13 @@ def initial():
 def login_aws():
     year,month = time.localtime()[0],time.localtime()[1]
     driver.get('https://console.aws.amazon.com/billing/home#/bill?year=%s&month=%s'%(year,month))
+    time.sleep(1.5)
+    driver.find_element_by_id('resolving_input').send_keys(account)
+    driver.find_element_by_id('next_button').click()
+    time.sleep(2)
     a=0
     while a<10:
         try:
-            time.sleep(1.5)
-            driver.find_element_by_id('resolving_input').send_keys(account)
-            driver.find_element_by_id('next_button').click()
-            time.sleep(2)
             driver.find_element_by_id('ap_signin1a_pagelet_title')
             driver.find_element_by_id('ap_password').send_keys(pwd)
             driver.find_element_by_id('signInSubmit-input').click()
